@@ -95,5 +95,19 @@ public class SettlementService {
 
         return isFlawless;
     }
+
+    @Transactional
+    public void createSnapshots() {
+        List<Account> accounts = accountRepository.findAll();
+        List<BalanceSnapshot> snapshots = accounts.stream()
+                .map(account -> BalanceSnapshot.builder()
+                        .accountId(account.getId())
+                        .timeQnt(account.getTimeQnt())
+                        .rankingPoint(account.getRankingPoint())
+                        .build())
+                .toList();
+
+        balanceSnapshotRepository.saveAll(snapshots);
+    }
 }
 
