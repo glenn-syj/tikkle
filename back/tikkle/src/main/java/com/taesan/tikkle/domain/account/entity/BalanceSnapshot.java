@@ -1,5 +1,6 @@
 package com.taesan.tikkle.domain.account.entity;
 
+import com.github.f4b6a3.ulid.UlidCreator;
 import com.taesan.tikkle.domain.member.entity.Member;
 import com.taesan.tikkle.global.entity.BaseEntity;
 import jakarta.persistence.Column;
@@ -20,7 +21,8 @@ import java.util.UUID;
 public class BalanceSnapshot extends BaseEntity {
 
     @Id
-    private UUID id;
+    @Column(columnDefinition = "BINARY(16)")
+    private UUID id = UlidCreator.getMonotonicUlid().toUuid();
 
     // 계좌 ID 이외의 정보는 필요하지 않으므로 Id만 이용
     @Column(nullable = false)
