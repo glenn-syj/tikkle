@@ -66,7 +66,7 @@ public class PagingSnapshotStrategy implements SnapshotStrategy {
 
             // 4. 다음 Slice 준비
             pageNumber++;
-            hasMoreData = !accountSlice.hasNext();
+            hasMoreData = accountSlice.hasNext();
         }
 
         logger.info("Created {} snapshots using Paging strategy", totalProcessed);
