@@ -67,5 +67,7 @@ public class Account extends AuditableEntity {
 	public void setBalance(Integer timeQnt) {
 		this.timeQnt = timeQnt;
 	}
+
+	public void setRankingPoint(Integer rankingPoint) { this.rankingPoint = rankingPoint; }
 }
 
