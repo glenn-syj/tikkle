@@ -40,5 +40,6 @@ public interface AccountRepository extends JpaRepository<Account, UUID> {
 
 	Optional<Account> findByMemberIdAndDeletedAtIsNull(UUID id);
 
+	@Query("SELECT a FROM Account a")
 	Slice<Account> findAllAsSlice(Pageable pageable);
 }
